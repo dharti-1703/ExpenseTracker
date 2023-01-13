@@ -21,3 +21,4 @@ Steps to run the project in local machine
 6. when you click on a purticular category, exepense list will be filterd out and expenses related to that category is shown. with that total amount of that category and amount which is availabe is also shown.
 7. user can Add, update, delete category and expenses from the list.
 
+![dashboard](https://user-images.githubusercontent.com/79825860/212385613-9bf4e6eb-ce37-435f-a3b0-a92166b927dd.png)
