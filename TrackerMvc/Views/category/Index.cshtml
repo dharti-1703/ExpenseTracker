@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TrackerMvc.Models.CategoryMvc>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-5">
+    <h2>Category</h2>
+</div>
+<p>
+    <a href="@Url.Action("AddOrEdit","category")" class=" btn btn-success"><i class="fa fa-plus"></i>  Create New</a>
+</p>
+
+
+<table class="table widget">
+    <tr class="widget-col">
+       
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryLimit)
+        </th>
+         <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @Html.HiddenFor(modelItem => item.CategoryId)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryLimit)
+            </td>
+            
+            <td>
+                <a href="@Url.Action("AddOrEdit","category", new { id = item.CategoryId })" class=" btn btn-danger"><i class="fa fa-pencil"></i>  Edit</a>
+
+            </td>
+
+            <td>
+                <a onclick="Delete(@item.CategoryId)" class=" btn btn-primary"><i class="fa fa-trash"></i>  Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function ()
+        {
+
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id)
+        {
+            alertify.confirm('web Application', 'Are you sure to delete this record ?',
+                function () {
+                    window.location.href = '@Url.Action("Delete","category")/' + id;
+                }, null);
+        }
+
+    </script>
+}

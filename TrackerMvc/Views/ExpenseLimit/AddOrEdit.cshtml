@@ -1,0 +1,47 @@
+﻿@model TrackerMvc.Models.ExpenseLimitMvc
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+
+<div class="widget col-md-7">
+                <h2>Expense Details</h2><br/>
+
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(model => model.ExpenseLimitId)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalExpense)
+                    @Html.EditorFor(model => model.TotalExpense)
+                    @Html.ValidationMessageFor(model => model.TotalExpense)
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Expense Limit")
+                    @Html.EditorFor(model => model.ExpenseLimit1)
+                    @Html.ValidationMessageFor(model => model.ExpenseLimit1)
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-danger" />
+                    <input type="reset" value="Reset" class="btn btn-success" />
+                </div>
+            }
+       
+</div>
+
+
+
+
+
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+

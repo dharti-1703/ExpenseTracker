@@ -1,0 +1,172 @@
+﻿@model IEnumerable<TrackerMvc.Models.ExpenseMvc>
+
+@{
+    ViewBag.Title = "Index";
+    int ExpenseAmount = 0;
+}
+
+<h2>Dashboard</h2>
+
+
+<br />
+
+<div>
+    <div class="col-md-3 table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table widget table-bordered mb-0 ">
+
+            <tr>
+                <th>
+                    Categories
+                </th>
+
+
+            </tr>
+
+            @foreach (var item in ViewBag.category)
+            {
+
+                <tr>
+                    <td>
+                        @Html.ActionLink((string)item.CategoryName, "Filter", new { id = item.CategoryId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+    <div class="col-md-9 table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table widget table-bordered mb-0 ">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseDate)
+                </th>
+
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                ExpenseAmount += item.Amount;
+                @Html.HiddenFor(modelItem => item.ExpenseId)
+                @Html.HiddenFor(modelItem => item.CategoryId)
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpenseTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpenseDate)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("AddOrEdit","Expense", new { id = item.ExpenseId })" class=" btn btn-danger"><i class="fa fa-pencil"></i>  Edit</a>
+                    </td>
+                    <td>
+                        <a onclick="Delete(@item.ExpenseId)" class=" btn btn-primary"><i class="fa fa-trash"></i>  Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+
+    <div>
+
+
+        <div class="col-md-4">
+            <table class="table widget">
+                <tr>
+                    <td rowspan="2">
+                        <i class="fa-sharp fa-solid fa-indian-rupee-sign"></i>
+                    </td>
+                    <td><b style="font-size: 18px;">Total Limit</b></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @ViewBag.limit
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div class="col-md-4">
+            <table class="table widget">
+                <tr>
+                    <td rowspan="2">
+                        <i class="fa fa-solid fa-indian-rupee-sign"></i>
+                    </td>
+                    <td><b style="font-size: 18px;">Total Amount</b></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @ExpenseAmount
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="col-md-4">
+            <table class="table widget">
+                <tr>
+                    <td rowspan="2">
+                        <i class="fa fa-solid fa-indian-rupee-sign"></i>
+                    </td>
+                    <td><b style="font-size: 18px;">Available Amount</b></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @(ViewBag.limit - ExpenseAmount)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script>
+        $(function ()
+        {
+
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id)
+        {
+            alertify.confirm('web Application', 'Are you sure to delete this record ?',
+                function () {
+                    window.location.href = '@Url.Action("Delete","Expense")/' + id;
+                }, null);
+        }
+
+    </script>
+}
+

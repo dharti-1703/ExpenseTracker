@@ -1,0 +1,64 @@
+﻿@model TrackerMvc.Models.ExpenseMvc
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>AddOrEdit</h2>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.ExpenseId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId)
+
+            @Html.DropDownListFor(model => model.CategoryId, ViewBag.categoryselect as SelectList, "Select Category", new { @class = "form-control", required = (string)null })
+
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExpenseTitle)
+            @Html.EditorFor(model => model.ExpenseTitle)
+            @Html.ValidationMessageFor(model => model.ExpenseTitle)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount)
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.ExpenseDate)
+          
+            @Html.EditorFor(model => model.ExpenseDate, new { htmlAttributes = new {id = "date", required = (string)null } })
+            @Html.ValidationMessageFor(model => model.ExpenseDate)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-danger" />
+            <input type="reset" value="Reset" class="btn btn-danger" />
+        </div>
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+    <script>
+        document.getElementById('date').valueAsDate = new Date();
+    </script>
+    
+}
+
+
+
