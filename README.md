@@ -22,3 +22,6 @@ Steps to run the project in local machine
 7. user can Add, update, delete category and expenses from the list.
 
 ![dashboard](https://user-images.githubusercontent.com/79825860/212385613-9bf4e6eb-ce37-435f-a3b0-a92166b927dd.png)
+![category-list](https://user-images.githubusercontent.com/79825860/212387306-a9076bb0-97b5-413e-9096-e24733fab9ed.png)
+![expnese](https://user-images.githubusercontent.com/79825860/212387348-28b0888a-b738-4c0d-b824-75da8e64c3e4.png)
+![addor delete](https://user-images.githubusercontent.com/79825860/212387376-4d208774-0e6a-4038-a60a-80933e05db2b.png)
