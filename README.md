@@ -25,7 +25,9 @@ Steps to run the project in local machine
 ![dashboard](https://user-images.githubusercontent.com/79825860/212385613-9bf4e6eb-ce37-435f-a3b0-a92166b927dd.png)
 ![image](https://user-images.githubusercontent.com/79825860/212456669-b4b5959e-f192-4616-be48-a97e4355aa0f.png)
 ![category-list](https://user-images.githubusercontent.com/79825860/212387306-a9076bb0-97b5-413e-9096-e24733fab9ed.png)
-![image](https://user-images.githubusercontent.com/79825860/212456833-82b19817-499a-4f17-82c7-f32f3995ec43.png)
+![image](https://user-images.githubusercontent.com/79825860/212456887-96759743-364f-4e77-a924-66c859c51afa.png)
+
 ![image](https://user-images.githubusercontent.com/79825860/212456854-18300c43-80fa-4068-8190-0ecd0d9f9e64.png)
 
+![image](https://user-images.githubusercontent.com/79825860/212456833-82b19817-499a-4f17-82c7-f32f3995ec43.png)
 
